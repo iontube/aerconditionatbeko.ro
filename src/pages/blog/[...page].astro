@@ -1,0 +1,81 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import keywordsData from '../../../keywords.json';
+
+export function getStaticPaths() {
+  function slugify(text: string) {
+    return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+
+  const done = (keywordsData.completed || []).map((item: any) => ({
+    title: item.keyword.charAt(0).toUpperCase() + item.keyword.slice(1),
+    slug: slugify(item.keyword),
+    excerpt: item.excerpt || '',
+    image: `/images/articles/${slugify(item.keyword)}.webp`,
+    category: item.category,
+    categorySlug: item.categorySlug,
+    date: item.date || new Date().toISOString(),
+  }));
+
+  const sorted = [...done].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  const PER = 15;
+  const pages = Math.max(1, Math.ceil(sorted.length / PER));
+  const paths: any[] = [];
+
+  for (let p = 1; p <= pages; p++) {
+    paths.push({
+      params: { page: p === 1 ? undefined : String(p) },
+      props: { articles: sorted.slice((p - 1) * PER, p * PER), cur: p, total: pages, top: p === 1 && sorted.length > 0 ? sorted[0] : null },
+    });
+  }
+  return paths;
+}
+
+const { articles, cur, total, top } = Astro.props;
+const grid = top ? articles.slice(1) : articles;
+---
+
+<Layout
+  title={cur === 1 ? 'Blog | AerConditionatBeko.ro' : `Blog - Pagina ${cur} | AerConditionatBeko.ro`}
+  description="Toate articolele si ghidurile despre aer conditionat Beko."
+>
+  <div data-entry-head>
+    <div class="shell">
+      <h1 data-entry-title>Blog</h1>
+      <p style="color: var(--color-n-500); margin-bottom: 0">Toate articolele si ghidurile noastre.</p>
+    </div>
+  </div>
+
+  <section data-block>
+    <div class="shell">
+      {top && (
+        <div style="margin-bottom: 28px">
+          <ArticleCard
+            title={top.title} slug={top.slug} excerpt={top.excerpt} image={top.image}
+            category={top.category} categorySlug={top.categorySlug} date={top.date}
+            variant="spotlight"
+          />
+        </div>
+      )}
+
+      {grid.length > 0 && (
+        <div data-posts>
+          {grid.map((a: any) => (
+            <ArticleCard title={a.title} slug={a.slug} excerpt={a.excerpt} image={a.image} category={a.category} categorySlug={a.categorySlug} date={a.date} />
+          ))}
+        </div>
+      )}
+
+      {total > 1 && (
+        <nav data-pages>
+          {cur > 1 && <a href={cur === 2 ? '/blog/' : `/blog/${cur - 1}/`} data-page>&larr;</a>}
+          {Array.from({ length: total }, (_, i) => i + 1).map(p => (
+            <a href={p === 1 ? '/blog/' : `/blog/${p}/`} data-page={p === cur ? 'current' : undefined}>{p}</a>
+          ))}
+          {cur < total && <a href={`/blog/${cur + 1}/`} data-page>&rarr;</a>}
+        </nav>
+      )}
+    </div>
+  </section>
+</Layout>

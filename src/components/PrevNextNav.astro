@@ -1,0 +1,53 @@
+---
+interface Props {
+  currentSlug: string;
+  currentCategory: string;
+  articles: Array<{
+    title: string;
+    slug: string;
+    category: string;
+    categorySlug: string;
+    date: string;
+  }>;
+}
+
+const { currentSlug, currentCategory, articles } = Astro.props;
+
+const skip = new Set(['index', 'contact', 'sitemap', 'politica-de-confidentialitate', 'politica-cookies', 'termeni-si-conditii', 'disclaimer-afiliere']);
+
+const sorted = articles
+  .filter(a => !skip.has(a.slug) && !a.slug.startsWith('['))
+  .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+const idx = sorted.findIndex(a => a.slug === currentSlug);
+
+let prev = null;
+let next = null;
+
+if (idx > 0) prev = sorted[idx - 1];
+if (idx < sorted.length - 1) next = sorted[idx + 1];
+
+const sameCat = sorted.filter(a => a.categorySlug === currentCategory && a.slug !== currentSlug);
+const sp = sameCat.filter(a => new Date(a.date) < new Date(sorted[idx]?.date || 0)).pop();
+const sn = sameCat.find(a => new Date(a.date) > new Date(sorted[idx]?.date || 0));
+
+if (sp) prev = sp;
+if (sn) next = sn;
+---
+
+{(prev || next) && (
+  <nav data-pn>
+    {prev ? (
+      <a href={`/${prev.slug}/`}>
+        <span data-pn-label>&larr; Anterior</span>
+        <span data-pn-title>{prev.title}</span>
+      </a>
+    ) : <div />}
+    {next ? (
+      <a href={`/${next.slug}/`} data-dir="next">
+        <span data-pn-label>Urmator &rarr;</span>
+        <span data-pn-title>{next.title}</span>
+      </a>
+    ) : <div />}
+  </nav>
+)}

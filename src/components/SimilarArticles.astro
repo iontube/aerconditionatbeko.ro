@@ -1,0 +1,48 @@
+---
+import ArticleCard from './ArticleCard.astro';
+
+interface Props {
+  currentSlug: string;
+  currentCategory: string;
+  articles: Array<{
+    title: string;
+    slug: string;
+    excerpt?: string;
+    image?: string;
+    category: string;
+    categorySlug: string;
+    date: string;
+  }>;
+}
+
+const { currentSlug, currentCategory, articles } = Astro.props;
+
+const skip = new Set(['index', 'contact', 'sitemap', 'politica-de-confidentialitate', 'politica-cookies', 'termeni-si-conditii', 'disclaimer-afiliere']);
+
+const pool = articles.filter(a => a.slug !== currentSlug && !skip.has(a.slug) && !a.slug.startsWith('['));
+const same = pool.filter(a => a.categorySlug === currentCategory);
+const other = pool.filter(a => a.categorySlug !== currentCategory);
+
+const picks = [...same, ...other]
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  .slice(0, 3);
+---
+
+{picks.length > 0 && (
+  <div data-related>
+    <h2>Articole similare</h2>
+    <div data-posts>
+      {picks.map(a => (
+        <ArticleCard
+          title={a.title}
+          slug={a.slug}
+          excerpt={a.excerpt || ''}
+          image={a.image || '/images/placeholder.webp'}
+          category={a.category}
+          categorySlug={a.categorySlug}
+          date={a.date}
+        />
+      ))}
+    </div>
+  </div>
+)}

@@ -1,0 +1,41 @@
+---
+interface Props {
+  title: string;
+  slug: string;
+  excerpt: string;
+  image: string;
+  category: string;
+  categorySlug: string;
+  date: string;
+  variant?: 'grid' | 'spotlight';
+}
+
+const { title, slug, excerpt, image, category, categorySlug, date, variant = 'grid' } = Astro.props;
+
+const plain = excerpt.replace(/<[^>]*>/g, '');
+const fdate = new Date(date).toLocaleDateString('ro-RO', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+{variant === 'spotlight' ? (
+  <a href={`/${slug}/`} data-spotlight>
+    <img src={image} alt={title} width="800" height="450" loading="eager" decoding="async" />
+    <div data-spotlight-content>
+      <span data-spotlight-tag>{category}</span>
+      <h3 data-spotlight-title>{title}</h3>
+      <p data-spotlight-desc>{plain}</p>
+    </div>
+  </a>
+) : (
+  <article data-post>
+    <a href={`/${slug}/`} data-post-thumb>
+      <img src={image} alt={title} width="400" height="225" loading="lazy" decoding="async" />
+      <span data-post-tag>{category}</span>
+    </a>
+    <div data-post-info>
+      <time data-post-date>{fdate}</time>
+      <h3 data-post-heading><a href={`/${slug}/`}>{title}</a></h3>
+      <p data-post-snippet>{plain}</p>
+      <a href={`/${slug}/`} data-post-more>Citeste &rarr;</a>
+    </div>
+  </article>
+)}

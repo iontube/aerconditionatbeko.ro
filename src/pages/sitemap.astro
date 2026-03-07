@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+import keywordsData from '../../keywords.json';
+
+function slugify(text: string) {
+  return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+
+const cats = [
+  { name: 'Aparate Aer Conditionat', slug: 'aparate-aer-conditionat' },
+  { name: 'Instalare si Montaj', slug: 'instalare-montaj' },
+  { name: 'Intretinere si Curatare', slug: 'intretinere-curatare' },
+  { name: 'Eficienta Energetica', slug: 'eficienta-energetica' },
+  { name: 'Ghiduri si Sfaturi', slug: 'ghiduri-sfaturi' },
+];
+
+const done = (keywordsData.completed || []).map((item: any) => ({
+  title: item.keyword.charAt(0).toUpperCase() + item.keyword.slice(1),
+  slug: slugify(item.keyword),
+  categorySlug: item.categorySlug,
+}));
+---
+
+<Layout title="Sitemap | AerConditionatBeko.ro" description="Harta site-ului AerConditionatBeko.ro.">
+  <div data-sitemap-wrap>
+    <h1>Sitemap</h1>
+
+    <div data-sitemap-group>
+      <h2>Categorii</h2>
+      <ul data-sitemap-list>
+        {cats.map(c => <li><a href={`/${c.slug}/`}>{c.name}</a></li>)}
+      </ul>
+    </div>
+
+    {cats.map(c => {
+      const items = done.filter((a: any) => a.categorySlug === c.slug);
+      return items.length > 0 && (
+        <div data-sitemap-group>
+          <h2>{c.name}</h2>
+          <ul data-sitemap-list>
+            {items.map((a: any) => <li><a href={`/${a.slug}/`}>{a.title}</a></li>)}
+          </ul>
+        </div>
+      );
+    })}
+
+    <div data-sitemap-group>
+      <h2>Pagini</h2>
+      <ul data-sitemap-list>
+        <li><a href="/">Acasa</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="/politica-de-confidentialitate/">Confidentialitate</a></li>
+        <li><a href="/termeni-si-conditii/">Termeni si Conditii</a></li>
+        <li><a href="/politica-cookies/">Politica Cookies</a></li>
+        <li><a href="/disclaimer-afiliere/">Disclaimer Afiliere</a></li>
+      </ul>
+    </div>
+  </div>
+</Layout>

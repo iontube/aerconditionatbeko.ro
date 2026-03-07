@@ -1,0 +1,24 @@
+<div data-consent id="consentBar">
+  <div data-consent-inner>
+    <p>Folosim cookie-uri pentru experienta ta. Citeste <a href="/politica-cookies/">politica de cookies</a>.</p>
+    <div data-consent-actions>
+      <button data-btn="ghost" id="consentNo">Refuz</button>
+      <button data-btn="fill" id="consentYes">Accept</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const bar = document.getElementById('consentBar');
+  if (!localStorage.getItem('ck')) {
+    setTimeout(() => bar?.classList.add('is-visible'), 1500);
+  }
+  document.getElementById('consentYes')?.addEventListener('click', () => {
+    localStorage.setItem('ck', '1');
+    bar?.classList.remove('is-visible');
+  });
+  document.getElementById('consentNo')?.addEventListener('click', () => {
+    localStorage.setItem('ck', '0');
+    bar?.classList.remove('is-visible');
+  });
+</script>

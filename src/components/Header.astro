@@ -1,0 +1,65 @@
+---
+const topics = [
+  { name: 'Aparate AC', slug: 'aparate-aer-conditionat' },
+  { name: 'Instalare', slug: 'instalare-montaj' },
+  { name: 'Intretinere', slug: 'intretinere-curatare' },
+  { name: 'Eficienta', slug: 'eficienta-energetica' },
+  { name: 'Sfaturi', slug: 'ghiduri-sfaturi' },
+];
+
+const path = Astro.url.pathname;
+---
+
+<header data-topbar>
+  <div class="shell">
+    <div data-topbar-inner>
+      <a href="/" data-logo>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z" stroke="currentColor" opacity=".3"/>
+          <path d="M8 10v4M12 9v6M16 10v4"/>
+        </svg>
+        <span data-logo-text>AerConditionat<b>Beko</b></span>
+      </a>
+
+      <nav data-links>
+        <a href="/" {...(path === '/' ? {'aria-current': 'page'} : {})}>Acasa</a>
+        {topics.map(t => (
+          <a href={`/${t.slug}/`} {...(path.startsWith(`/${t.slug}`) ? {'aria-current': 'page'} : {})}>{t.name}</a>
+        ))}
+      </nav>
+
+      <button data-burger id="navTrigger" aria-label="Deschide meniul">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M4 7h16M4 12h16M4 17h16"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div data-sheet id="navSheet">
+    <div data-sheet-dim id="navDim"></div>
+    <div data-sheet-body>
+      <div data-sheet-handle></div>
+      <nav>
+        <a href="/" {...(path === '/' ? {'aria-current': 'page'} : {})}>Acasa</a>
+        {topics.map(t => (
+          <a href={`/${t.slug}/`} {...(path.startsWith(`/${t.slug}`) ? {'aria-current': 'page'} : {})}>{t.name}</a>
+        ))}
+        <a href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<script>
+  const trigger = document.getElementById('navTrigger');
+  const sheet = document.getElementById('navSheet');
+  const dim = document.getElementById('navDim');
+
+  function openNav() { sheet?.classList.add('is-open'); }
+  function closeNav() { sheet?.classList.remove('is-open'); }
+
+  trigger?.addEventListener('click', openNav);
+  dim?.addEventListener('click', closeNav);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
+</script>

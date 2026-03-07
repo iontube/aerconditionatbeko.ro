@@ -1,0 +1,96 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import keywordsData from '../../keywords.json';
+
+const topics = [
+  { name: 'Aparate Aer Conditionat', slug: 'aparate-aer-conditionat', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 7l-5 5-5-5"/><path d="M2 12h20"/><path d="M7 17l5-5 5 5"/></svg>', desc: 'Modele, preturi si specificatii Beko' },
+  { name: 'Instalare si Montaj', slug: 'instalare-montaj', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>', desc: 'Costuri, pasi si cerinte de montaj' },
+  { name: 'Intretinere si Curatare', slug: 'intretinere-curatare', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>', desc: 'Filtre, mentenanta si probleme frecvente' },
+  { name: 'Eficienta Energetica', slug: 'eficienta-energetica', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>', desc: 'Consum, clase energetice si costuri lunare' },
+  { name: 'Sfaturi Practice', slug: 'ghiduri-sfaturi', icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>', desc: 'Dimensionare BTU, alegere model, comparatii' },
+];
+
+function slugify(text: string) {
+  return text.toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+
+const done = (keywordsData.completed || []).map((item: any) => ({
+  title: item.keyword.charAt(0).toUpperCase() + item.keyword.slice(1),
+  slug: slugify(item.keyword),
+  excerpt: item.excerpt || '',
+  image: `/images/articles/${slugify(item.keyword)}.webp`,
+  category: item.category,
+  categorySlug: item.categorySlug,
+  date: item.date || new Date().toISOString(),
+}));
+
+const recent = [...done]
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  .slice(0, 12);
+
+const counts: Record<string, number> = {};
+for (const a of done) counts[a.categorySlug] = (counts[a.categorySlug] || 0) + 1;
+---
+
+<Layout
+  title="Aer Conditionat Beko — Pareri, Preturi, Specificatii | AerConditionatBeko.ro"
+  description="Comparatii intre modele, preturi actualizate si specificatii tehnice pentru aparate de aer conditionat Beko. Afla care model e potrivit pentru spatiul tau."
+>
+  <section data-banner>
+    <div class="shell">
+      <div data-banner-content>
+        <h1>Aer conditionat <em>Beko</em> — pareri, preturi, specificatii</h1>
+        <p data-banner-sub>Comparatii intre modele, costuri reale de instalare si consum, sfaturi de intretinere. Informatii concrete, fara marketing.</p>
+      </div>
+    </div>
+  </section>
+
+  <section data-block>
+    <div class="shell">
+      <h2 data-block-title>Categorii</h2>
+      <div data-topics>
+        {topics.map(t => (
+          <a href={`/${t.slug}/`} data-topic>
+            <div data-topic-icon set:html={t.icon} />
+            <div>
+              <div data-topic-name>{t.name}</div>
+              <div data-topic-count>{counts[t.slug] || 0} articole</div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {recent.length > 0 && (
+    <section data-block="alt">
+      <div class="shell">
+        <h2 data-block-title>Articole recente</h2>
+        <div data-posts>
+          {recent.map(a => (
+            <ArticleCard
+              title={a.title}
+              slug={a.slug}
+              excerpt={a.excerpt}
+              image={a.image}
+              category={a.category}
+              categorySlug={a.categorySlug}
+              date={a.date}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section data-block>
+    <div class="shell" style="max-width:720px">
+      <h2 data-block-title style="text-align:center">Despre noi</h2>
+      <p>Beko are o gama larga de aparate de aer conditionat, de la modele inverter de ultima generatie pana la unitati accesibile pentru garsoniere. Pe acest site gasesti specificatii tehnice, comparatii intre modele, avantaje si dezavantaje reale.</p>
+      <p>Articolele acopera selectarea capacitatii BTU potrivite, curatarea filtrelor, costuri de instalare si consum energetic — informatii practice, fara clisee.</p>
+    </div>
+  </section>
+</Layout>
