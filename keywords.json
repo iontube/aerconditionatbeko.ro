@@ -28,11 +28,6 @@
   ],
   "pending": [
     {
-      "keyword": "aer conditionat beko 18000 btu",
-      "category": "Aparate Aer Conditionat",
-      "categorySlug": "aparate-aer-conditionat"
-    },
-    {
       "keyword": "aer conditionat beko 24000 btu",
       "category": "Aparate Aer Conditionat",
       "categorySlug": "aparate-aer-conditionat"
@@ -532,6 +527,11 @@
     },
     {
       "keyword": "aer conditionat beko 9000 btu",
+      "category": "Aparate Aer Conditionat",
+      "categorySlug": "aparate-aer-conditionat"
+    },
+    {
+      "keyword": "aer conditionat beko 18000 btu",
       "category": "Aparate Aer Conditionat",
       "categorySlug": "aparate-aer-conditionat"
     }
