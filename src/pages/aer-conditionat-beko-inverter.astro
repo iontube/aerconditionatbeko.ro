@@ -1,0 +1,444 @@
+---
+export const frontmatter = {
+  title: "Aer Conditionat Beko Inverter",
+  slug: "aer-conditionat-beko-inverter",
+  category: "Aparate Aer Conditionat",
+  categorySlug: "aparate-aer-conditionat",
+  excerpt: "Cautati un aer conditionat Beko inverter? Modelul Beko BFHPI 120, cu o capacitate de 12000 BTU, este disponibil la un pret mediu de 2.300 lei, oferind o solutie eficienta pentru climatizarea spatiilor.",
+  image: "/images/articles/aer-conditionat-beko-inverter.webp",
+  publishDate: "2026-03-12T12:57:35.080Z",
+  modifiedDate: "2026-03-12T12:57:35.080Z",
+  author: "Razvan Munteanu"
+};
+
+import Layout from '../layouts/Layout.astro';
+import PrevNextNav from '../components/PrevNextNav.astro';
+import SimilarArticles from '../components/SimilarArticles.astro';
+import keywordsData from '../../keywords.json';
+
+const allArticles = (keywordsData.completed || []).map(item => ({
+  title: item.keyword.charAt(0).toUpperCase() + item.keyword.slice(1),
+  slug: item.keyword.toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, ''),
+  category: item.category,
+  categorySlug: item.categorySlug,
+  excerpt: item.excerpt || '',
+  image: `/images/articles/${item.keyword.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')}.webp`,
+  date: item.date || new Date().toISOString()
+}));
+---
+
+<Layout
+  title={`${frontmatter.title} | AerConditionatBeko.ro`}
+  description={frontmatter.excerpt}
+  canonical={`/${frontmatter.slug}/`}
+  type="article"
+  image={frontmatter.image}
+  author={frontmatter.author}
+  publishedTime={frontmatter.publishDate}
+  modifiedTime={frontmatter.modifiedDate}
+  faqSchema={{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Cat costa un aer conditionat Beko inverter 12000 BTU in 2026?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pretul unui aer conditionat Beko inverter de 12000 BTU in 2026 variaza intre 1.900 lei si 2.700 lei, in functie de model, clasa energetica si functiile suplimentare."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Ce model Beko inverter este cel mai eficient energetic?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Modelul Beko BEVPI 121 se remarca prin cea mai buna eficienta energetica, atingand clasa A+++ la racire si A++ la incalzire."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Cat consuma un aer conditionat Beko inverter pe luna?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Consumul lunar depinde de utilizare, dar un aparat de 12000 BTU cu clasa energetica A++ poate consuma intre 40-70 kWh pe luna la utilizare zilnica de 6-8 ore."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Cum aleg aerul conditionat Beko potrivit pentru apartamentul meu?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Evaluati suprafata camerei (12000 BTU pentru 20-25 mp), izolatia si numarul de ferestre. Alegeti o clasa energetica superioara (A++ sau A+++) si un nivel de zgomot redus pentru dormitoare."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Care sunt cele mai comune probleme la aparatele Beko inverter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cele mai frecvente probleme sunt legate de instalarea incorecta, lipsa mentenantei periodice (curatarea filtrelor) sau utilizarea in conditii extreme care depasesc specificatiile aparatului."
+        }
+      }
+    ]
+  }}
+  breadcrumbs={[
+    { name: "Acasa", url: "/" },
+    { name: "Aparate Aer Conditionat", url: "/aparate-aer-conditionat/" },
+    { name: "Aer Conditionat Beko Inverter", url: "/aer-conditionat-beko-inverter/" }
+  ]}
+>
+  <article>
+    <header data-entry-head>
+      <div class="shell">
+        <nav data-crumbs>
+          <a href="/">Acasa</a>
+          <span>/</span>
+          <a href={`/${frontmatter.categorySlug}/`}>{frontmatter.category}</a>
+          <span>/</span>
+          <span style="color: var(--color-n-300)">{frontmatter.title}</span>
+        </nav>
+        <a href={`/${frontmatter.categorySlug}/`} data-entry-cat>{frontmatter.category}</a>
+        <h1 data-entry-title>{frontmatter.title}</h1>
+        <div data-entry-byline>
+          <span>{frontmatter.author}</span>
+          <span>&bull;</span>
+          <time datetime={frontmatter.publishDate}>{new Date(frontmatter.publishDate).toLocaleDateString('ro-RO', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        </div>
+      </div>
+    </header>
+
+    <div data-entry-body>
+      <div data-prose>
+        <img src="/images/articles/aer-conditionat-beko-inverter.webp" alt="Aer Conditionat Beko Inverter" data-entry-img width="800" height="600" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:12px;margin-bottom:24px;" />
+
+        <div data-outline-mobile id="mobileOutline">
+          <button onclick="document.getElementById('mobileOutline').classList.toggle('is-open')">
+            <span>Cuprins</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul>
+            <li><a href="#beko-bfhpi-120">Beko BFHPI 120</a></li>
+            <li><a href="#beko-bevpi-121">Beko BEVPI 121</a></li>
+            <li><a href="#beko-brvpg-120">Beko BRVPG 120</a></li>
+            <li><a href="#beko-bbfda-120">Beko BBFDA 120</a></li>
+            <li><a href="#comparatie">Comparatie Modele Aer Conditionat Beko Inverter 12000 BTU</a></li>
+            <li><a href="#ghid">Alegerea Aerului Conditionat Beko Inverter Potrivit</a></li>
+            <li><a href="#faq">Intrebari frecvente</a></li>
+          </ul>
+        </div>
+
+        <section id="intro">
+          <p>Cautati un <strong>aer conditionat Beko inverter</strong>? Modelul Beko BFHPI 120, cu o capacitate de 12000 BTU, este disponibil la un pret mediu de 2.300 lei, oferind o solutie eficienta pentru climatizarea spatiilor.</p><p>Acest tip de aparat este ideal pentru camere de dimensiuni medii, cum ar fi dormitoare sau livinguri de apartament. Inainte de a alege, evaluati suprafata camerei si izolatia acesteia. Daca aveti nevoie de mai multa putere, modelele de 18000 BTU sau 24000 BTU pot fi mai potrivite, iar pentru spatii foarte mici, 9000 BTU poate fi suficient.</p><p>Articolul analizeaza specificatiile cheie ale aparatelor cu tehnologie inverter de la Beko, prezinta avantaje si dezavantaje concrete si ofera recomandari pentru alegerea potrivita.</p>
+        </section>
+
+          <h2>Aer Conditionat Beko Inverter</h2>
+          
+          <article id="beko-bfhpi-120" data-review>
+            <div data-review-top>
+              <span data-section-tag>Raport Calitate-Pret</span>
+              <h3>Beko BFHPI 120</h3>
+              <div data-specs>
+              <span data-spec><strong>capacitate:</strong> 12000 BTU</span>
+              <span data-spec><strong>clasa energetica:</strong> A++ racire / A+ incalzire</span>
+              <span data-spec><strong>nivel zgomot:</strong> 21 dB(A) interior / 50 dB(A) exterior</span>
+              <span data-spec><strong>compresor:</strong> Inverter</span>
+              <span data-spec><strong>refrigerant:</strong> R32</span>
+              <span data-spec><strong>dimensiuni:</strong> 835 x 285 x 200 mm (unitate interioara)</span>
+              </div>
+            </div>
+            <div data-review-text>
+              <p>Beko BFHPI 120 integreaza tehnologia inverter, un standard in climatizarea moderna. Aceasta permite ajustarea continua a turatiei compresorului pentru a mentine temperatura dorita, fara fluctuatii mari. Rezultatul este un consum redus de energie si un confort sporit.</p><p>Ce performante ofera compresorul inverter? Acest tip de compresor regleaza puterea in functie de necesarul de racire sau incalzire, evitand pornirile si opririle bruste specifice aparatelor conventionale. Astfel, temperatura interioara ramane constanta, iar disconfortul termic este eliminat.</p><p>Cat de silentios este in functionare? Unitatea interioara a modelului BFHPI 120 opereaza la un nivel de zgomot de doar 21 dB(A) pe treapta minima de ventilatie. Acest lucru il face o optiune buna pentru dormitoare sau birouri, unde linistea este importanta. Nivelul de zgomot exterior este de 50 dB(A), standard pentru aparatele de acest tip.</p><p>Merita diferenta de pret fata de modelele mai ieftine? Tehnologia inverter, desi aduce un cost initial usor mai ridicat, inseamna economii semnificative pe termen lung. Consumul de energie poate fi cu pana la 30-40% mai mic comparativ cu aparatele non-inverter, amortizand investitia.</p><p>Ce refrigerant foloseste si ce implica? Acest aparat utilizeaza refrigerantul R32, o substanta cu un impact redus asupra mediului comparativ cu R410A. R32 ofera o eficienta termica superioara.</p><p>Beko BFHPI 120 este potrivit pentru o camera de aproximativ 20-25 mp, cu o inaltime standard. Daca spatiul este mai mare sau prost izolat, poate fi necesara o unitate de 18000 BTU. Pentru spatii mai mici, un model de 9000 BTU ar fi suficient, consultati ghidul nostru despre <a href="/aer-conditionat-beko-9000-btu/">aer conditionat beko 9000 btu</a> pentru detalii.</p>
+            </div>
+            <div data-verdict>
+              <div>
+                <h4>Avantaje</h4>
+                <ul data-pros>
+                <li>Consum redus de energie datorita tehnologiei inverter</li>
+                  <li>Nivel de zgomot foarte scazut in modul de functionare</li>
+                  <li>Utilizeaza refrigerant ecologic R32</li>
+                  <li>Mentine temperatura constanta, fara variatii</li>
+                  <li>Functii multiple pentru confort (turbo, sleep, auto-restart)</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Dezavantaje</h4>
+                <ul data-cons>
+                <li>Pretul initial poate fi mai mare decat la aparatele conventionale</li>
+                  <li>Instalarea necesita personal calificat pentru a beneficia de garantie</li>
+                  <li>Poate necesita o unitate mai puternica pentru spatii mari sau prost izolate</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <article id="beko-bevpi-121" data-review>
+            <div data-review-top>
+              <span data-section-tag>Alegerea Noastra</span>
+              <h3>Beko BEVPI 121</h3>
+              <div data-specs>
+              <span data-spec><strong>capacitate:</strong> 12000 BTU</span>
+              <span data-spec><strong>clasa energetica:</strong> A+++ racire / A++ incalzire</span>
+              <span data-spec><strong>nivel zgomot:</strong> 20 dB(A) interior / 49 dB(A) exterior</span>
+              <span data-spec><strong>compresor:</strong> Inverter</span>
+              <span data-spec><strong>refrigerant:</strong> R32</span>
+              <span data-spec><strong>dimensiuni:</strong> 805 x 285 x 194 mm (unitate interioara)</span>
+              </div>
+            </div>
+            <div data-review-text>
+              <p>Modelul Beko BEVPI 121 are eficienta energetica de top, atingand clasa A+++ la racire. Aceasta performanta este sustinuta de compresorul inverter si de utilizarea refrigerantului R32.</p><p>Ce face acest model o optiune de top? Clasa energetica A+++ inseamna un consum minim de electricitate. Daca utilizati aparatul frecvent, fie pentru racire vara, fie pentru incalzire iarna (acolo unde temperaturile permit), economia la factura de curent va fi vizibila.</p><p>Cat de eficient este la incalzire? Desi principalul sau rol este racirea, acest model ofera si o buna performanta la incalzire, cu clasa A++. Poate fi o sursa suplimentara de caldura in sezonul rece, reducand dependenta de sistemul principal de incalzire.</p><p>Este mai silentios decat alte modele? Cu un nivel de zgomot de 20 dB(A) in interior, BEVPI 121 este printre cele mai silentioase aparate de pe piata. Acest aspect il recomanda pentru camere unde linistea e esentiala, precum dormitoarele copiilor sau spatii de lucru.</p><p>Ce functii suplimentare ofera? Pe langa controlul precis al temperaturii, aparatul are functii precum dezumidificare, mod turbo pentru racire rapida si programare pe 24 de ore. Functia de auto-curatare previne aparitia mucegaiului si a bacteriilor.</p><p>Este acest model potrivit pentru dumneavoastra? Daca locuiti la apartament, intr-o zona cu veri toride, si puneti accent pe eficienta energetica si confort acustic, Beko BEVPI 121 este o investitie buna. Pentru spatii mai mari de 25 mp, luați în considerare modelele de <a href="/aer-conditionat-beko-18000-btu/">aer conditionat beko 18000 btu</a>.</p>
+            </div>
+            <div data-verdict>
+              <div>
+                <h4>Avantaje</h4>
+                <ul data-pros>
+                <li>Eficienta energetica de top (A+++)</li>
+                  <li>Foarte silentios in functionare</li>
+                  <li>Performanta buna si la incalzire</li>
+                  <li>Functii avansate pentru confort si igiena</li>
+                  <li>Refrigerant R32 ecologic</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Dezavantaje</h4>
+                <ul data-cons>
+                <li>Pretul este printre cele mai ridicate din gama Beko</li>
+                  <li>Necesita mentenanta periodica pentru a-si pastra eficienta</li>
+                  <li>Telecomanda poate parea putin complexa la prima utilizare</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <article id="beko-brvpg-120" data-review>
+            <div data-review-top>
+              <span data-section-tag>Pentru Buget Mic</span>
+              <h3>Beko BRVPG 120</h3>
+              <div data-specs>
+              <span data-spec><strong>capacitate:</strong> 12000 BTU</span>
+              <span data-spec><strong>clasa energetica:</strong> A+ racire / A incalzire</span>
+              <span data-spec><strong>nivel zgomot:</strong> 24 dB(A) interior / 54 dB(A) exterior</span>
+              <span data-spec><strong>compresor:</strong> Inverter</span>
+              <span data-spec><strong>refrigerant:</strong> R32</span>
+              <span data-spec><strong>dimensiuni:</strong> 800 x 280 x 190 mm (unitate interioara)</span>
+              </div>
+            </div>
+            <div data-review-text>
+              <p>Modelul Beko BRVPG 120 reprezinta o optiune accesibila pentru cei care cauta un aparat de aer conditionat cu tehnologie inverter, fara a depasi un buget restrans. Capacitatea de 12000 BTU il face potrivit pentru camere medii.</p><p>Cum se compara cu alte modele inverter? Desi nu atinge clasele energetice superioare (A+ la racire), BRVPG 120 ofera beneficiile tehnologiei inverter: reglarea turatiei compresorului si un consum mai mic decat aparatele on-off.</p><p>Ce inseamna clasa energetica A+? Aceasta clasa este decenta pentru un aparat din segmentul de buget. Consumul de energie va fi mai mare decat la modelele A++ sau A+++, dar totusi mai mic decat la aparatele de generatie mai veche sau cele fara inverter.</p><p>Este zgomotos? Nivelul de zgomot de 24 dB(A) in interior este acceptabil pentru majoritatea utilizatorilor. Nu este cel mai silentios aparat de pe piata, dar nici deranjant. Pentru comparatie, o conversatie normala se desfasoara la aproximativ 60 dB(A).</p><p>Ce functii de baza sunt incluse? Aparatul are modurile esentiale: racire, incalzire, ventilare si dezumidificare. Functiile de temporizator si auto-restart sunt prezente, aducand un plus de comoditate.</p><p>Pentru cine este recomandat acest aparat? Beko BRVPG 120 este o alegere potrivita pentru cei cu un buget limitat, care au nevoie de un aparat de aer conditionat inverter pentru o camera de pana in 20-25 mp. Daca prioritatile sunt eficienta maxima si zgomot minim, poate fi necesara o investitie mai mare.</p>
+            </div>
+            <div data-verdict>
+              <div>
+                <h4>Avantaje</h4>
+                <ul data-pros>
+                <li>Pret accesibil pentru un aparat cu tehnologie inverter</li>
+                  <li>Utilizeaza refrigerant R32</li>
+                  <li>Functii de baza suficiente pentru uz casnic</li>
+                  <li>Consum mai mic decat aparatele non-inverter</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Dezavantaje</h4>
+                <ul data-cons>
+                <li>Clasa energetica mai scazuta comparativ cu alte modele inverter</li>
+                  <li>Nivel de zgomot usor mai ridicat in interior</li>
+                  <li>Performanta la incalzire poate fi limitata la temperaturi exterioare scazute</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <article id="beko-bbfda-120" data-review>
+            <div data-review-top>
+              <span data-section-tag>Best Buy 2026</span>
+              <h3>Beko BBFDA 120</h3>
+              <div data-specs>
+              <span data-spec><strong>capacitate:</strong> 12000 BTU</span>
+              <span data-spec><strong>clasa energetica:</strong> A++ racire / A+ incalzire</span>
+              <span data-spec><strong>nivel zgomot:</strong> 22 dB(A) interior / 51 dB(A) exterior</span>
+              <span data-spec><strong>compresor:</strong> Inverter</span>
+              <span data-spec><strong>refrigerant:</strong> R32</span>
+              <span data-spec><strong>dimensiuni:</strong> 810 x 280 x 200 mm (unitate interioara)</span>
+              </div>
+            </div>
+            <div data-review-text>
+              <p>Modelul Beko BBFDA 120 ofera un echilibru foarte bun intre performanta, eficienta energetica si pret, fiind o optiune de tip "best buy". Tehnologia inverter si capacitatea de 12000 BTU il recomanda pentru o gama larga de spatii.</p><p>Ce il face o alegere "best buy"? Acest aparat integreaza tehnologia inverter, utilizand refrigerant R32 si atingand clasa energetica A++ la racire. Pretul sau este competitiv, oferind un raport calitate-pret excelent pentru functiile si eficienta pe care le aduce.</p><p>Cum se descurca la racire si incalzire? Cu 12000 BTU, raceste eficient o camera de pana la 25 mp. La incalzire, clasa energetica A+ indica o eficienta buna, fiind util ca sursa auxiliara de caldura in sezonul rece, in special in perioadele de tranzitie.</p><p>Este zgomotos? Nivelul de zgomot de 22 dB(A) in interior este redus, permitand utilizarea confortabila in dormitoare sau zone de lucru. Unitatea exterioara are 51 dB(A), un nivel normal pentru acest tip de echipament.</p><p>Ce functii specifice are? Pe langa cele standard, acest model include functia "Follow Me" care permite unitatii sa ajusteze temperatura in functie de pozitionarea telecomenzii, asigurand confort in zona in care va aflati. Modul "Smart Defrost" optimizeaza procesul de dezghetare.</p><p>Pentru cine este recomandat BBFDA 120? Este ideal pentru familiile care cauta un aparat eficient energetic, fiabil si la un pret corect. Se potriveste perfect in livinguri, dormitoare sau birouri de dimensiuni medii. Pentru spatii mai mari, puteti consulta oferta de <a href="/aer-conditionat-beko-24000-btu/">aer conditionat beko 24000 btu</a>.</p>
+            </div>
+            <div data-verdict>
+              <div>
+                <h4>Avantaje</h4>
+                <ul data-pros>
+                <li>Raport calitate-pret excelent</li>
+                  <li>Tehnologie inverter cu eficienta energetica A++</li>
+                  <li>Nivel de zgomot redus in interior</li>
+                  <li>Functii suplimentare utile (Follow Me, Smart Defrost)</li>
+                  <li>Refrigerant R32</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Dezavantaje</h4>
+                <ul data-cons>
+                <li>Performanta la incalzire poate scadea semnificativ la temperaturi foarte scazute</li>
+                  <li>Telecomanda, desi functionala, nu este cea mai intuitiva</li>
+                  <li>Disponibilitatea poate varia in functie de sezon</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          
+          <section id="comparatie">
+            <h2>Comparatie Modele Aer Conditionat Beko Inverter 12000 BTU</h2>
+            <div data-table-wrap>
+              <div data-table-hint><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg> Gliseaza pentru mai multe coloane</div>
+              <div data-table-scroll>
+                <table data-table>
+                  <thead><tr><th>Model</th><th>Capacitate</th><th>Clasa energetica</th><th>Zgomot</th><th>Pret</th><th>Potrivit pentru</th></tr></thead>
+                  <tbody>
+              <tr><td>Beko BFHPI 120</td><td>12000 BTU</td><td>A++ / A+</td><td>21 dB(A) / 50 dB(A)</td><td>~2.300 lei</td><td>Camere 20-25 mp, uz general</td></tr>
+              <tr><td>Beko BEVPI 121</td><td>12000 BTU</td><td>A+++ / A++</td><td>20 dB(A) / 49 dB(A)</td><td>~2.700 lei</td><td>Camere 20-25 mp, eficienta maxima, confort acustic</td></tr>
+              <tr><td>Beko BRVPG 120</td><td>12000 BTU</td><td>A+ / A</td><td>24 dB(A) / 54 dB(A)</td><td>~1.900 lei</td><td>Camere 20-25 mp, buget redus</td></tr>
+              <tr><td>Beko BBFDA 120</td><td>12000 BTU</td><td>A++ / A+</td><td>22 dB(A) / 51 dB(A)</td><td>~2.400 lei</td><td>Camere 20-25 mp, echilibru performanta-pret, functii extra</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          
+          <section id="ghid">
+            <h2>Alegerea Aerului Conditionat Beko Inverter Potrivit</h2>
+            <div data-tip>
+              <p>Selectarea unui <strong>aer conditionat beko inverter</strong> corect depinde de mai multi factori. Nu va bazati doar pe pret sau pe marca. Evaluati cu atentie nevoile specifice ale spatiului dumneavoastra.</p><h4>Ce capacitate (BTU) aveti nevoie?</h4><p>Capacitatea se masoara in BTU (British Thermal Units). O regula generala pentru camerele bine izolate, cu inaltime standard (aprox 2.6m), este: <br>- 7.000 - 9.000 BTU pentru spatii de 15-20 mp.<br>- 12.000 BTU pentru spatii de 20-25 mp.<br>- 18.000 BTU pentru spatii de 30-40 mp.<br>- 24.000 BTU pentru spatii de 40-55 mp.<br>Luati in calcul factori suplimentari: numarul de ferestre, orientarea camerei (sudica primeste mai mult soare), izolatia cladirii, numarul de persoane care folosesc spatiul si sursele de caldura (electrocasnice, iluminat).</p><h4>De ce este importanta tehnologia Inverter?</h4><p>Aparatele cu inverter ajusteaza continuu turatia compresorului, mentinand temperatura constanta si consumand mai putina energie decat modelele clasice (on-off) care pornesc si se opresc frecvent. Aceasta tehnologie inseamna confort sporit si facturi mai mici la electricitate pe termen lung. Desi costul initial este mai mare, amortizarea investitiei se face in timp.</p><h4>Ce inseamna clasa energetica?</h4><p>Clasa energetica indica eficienta aparatului. Cu cat clasa este mai ridicata (A+++, A++, A+), cu atat consumul de energie este mai mic. Pentru un impact maxim asupra facturii, alegeti aparate cu clasa A++ sau A+++, mai ales daca prevadeti o utilizare intensiva. Verificati atat clasa pentru racire, cat si pentru incalzire.</p><h4>Ce alte specificatii conteaza?</h4><p><strong>Nivelul de zgomot:</strong> Important pentru dormitoare sau zone de lucru. Valorile sub 25 dB(A) sunt considerate silentioase. Verificati nivelul de zgomot atat pentru unitatea interioara, cat si pentru cea exterioara. <br><strong>Refrigerant:</strong> R32 este refrigerantul modern, mai ecologic si eficient decat R410A. <br><strong>Functii suplimentare:</strong> Dezumidificare, mod turbo, programare, auto-restart, functii de filtrare a aerului (ionizare, filtre HEPA) pot adauga confort si igiena.</p><h4>Greseli frecvente de evitat</h4><p>1. Alegerea unei capacitati prea mici sau prea mari pentru spatiu.<br>2. Ignorarea clasei energetice, concentrandu-va doar pe pretul de achizitie.<br>3. Instalarea incorecta, care poate duce la pierderi de performanta si anularea garantiei.<br>4. Neefectuarea intretinerii periodice (curatarea filtrelor, verificarea agentului frigorific).</p>
+            </div>
+          </section>
+
+          <div data-accordion>
+            <h2>Intrebari frecvente</h2>
+              
+              <div data-qa>
+                <button onclick="this.parentElement.classList.toggle('is-open')">
+                  Cat costa un aer conditionat Beko inverter 12000 BTU in 2026?
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <div data-qa-answer>
+                  Pretul unui aer conditionat Beko inverter de 12000 BTU in 2026 variaza intre 1.900 lei si 2.700 lei, in functie de model, clasa energetica si functiile suplimentare.
+                </div>
+              </div>
+              
+              <div data-qa>
+                <button onclick="this.parentElement.classList.toggle('is-open')">
+                  Ce model Beko inverter este cel mai eficient energetic?
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <div data-qa-answer>
+                  Modelul Beko BEVPI 121 se remarca prin cea mai buna eficienta energetica, atingand clasa A+++ la racire si A++ la incalzire.
+                </div>
+              </div>
+              
+              <div data-qa>
+                <button onclick="this.parentElement.classList.toggle('is-open')">
+                  Cat consuma un aer conditionat Beko inverter pe luna?
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <div data-qa-answer>
+                  Consumul lunar depinde de utilizare, dar un aparat de 12000 BTU cu clasa energetica A++ poate consuma intre 40-70 kWh pe luna la utilizare zilnica de 6-8 ore.
+                </div>
+              </div>
+              
+              <div data-qa>
+                <button onclick="this.parentElement.classList.toggle('is-open')">
+                  Cum aleg aerul conditionat Beko potrivit pentru apartamentul meu?
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <div data-qa-answer>
+                  Evaluati suprafata camerei (12000 BTU pentru 20-25 mp), izolatia si numarul de ferestre. Alegeti o clasa energetica superioara (A++ sau A+++) si un nivel de zgomot redus pentru dormitoare.
+                </div>
+              </div>
+              
+              <div data-qa>
+                <button onclick="this.parentElement.classList.toggle('is-open')">
+                  Care sunt cele mai comune probleme la aparatele Beko inverter?
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <div data-qa-answer>
+                  Cele mai frecvente probleme sunt legate de instalarea incorecta, lipsa mentenantei periodice (curatarea filtrelor) sau utilizarea in conditii extreme care depasesc specificatiile aparatului.
+                </div>
+              </div>
+          </div>
+
+          <PrevNextNav
+            currentSlug="aer-conditionat-beko-inverter"
+            currentCategory="aparate-aer-conditionat"
+            articles={allArticles}
+          />
+
+          <SimilarArticles
+            currentSlug="aer-conditionat-beko-inverter"
+            currentCategory="aparate-aer-conditionat"
+            articles={allArticles}
+          />
+        </div>
+
+        <aside data-outline id="sideOutline">
+          <div data-outline-label>Cuprins</div>
+          <ul>
+            <li><a href="#beko-bfhpi-120">Beko BFHPI 120</a></li>
+              <li><a href="#beko-bevpi-121">Beko BEVPI 121</a></li>
+              <li><a href="#beko-brvpg-120">Beko BRVPG 120</a></li>
+              <li><a href="#beko-bbfda-120">Beko BBFDA 120</a></li>
+              <li><a href="#comparatie">Comparatie Modele Aer Conditionat Beko Inverter 12000 BTU</a></li>
+              <li><a href="#ghid">Alegerea Aerului Conditionat Beko Inverter Potrivit</a></li>
+              <li><a href="#faq">Intrebari frecvente</a></li>
+          </ul>
+        </aside>
+      </div>
+  </article>
+
+  <script>
+    // Table scroll detection
+    (function() {
+      const outer = document.querySelector('[data-table-wrap]');
+      if (!outer) return;
+      const scroll = outer.querySelector('[data-table-scroll]');
+      function check() {
+        if (scroll.scrollWidth > scroll.clientWidth) {
+          outer.classList.add('can-scroll');
+        } else {
+          outer.classList.remove('can-scroll');
+        }
+        if (scroll.scrollLeft + scroll.clientWidth >= scroll.scrollWidth - 2) {
+          outer.classList.remove('can-scroll');
+        }
+      }
+      check();
+      scroll.addEventListener('scroll', check);
+      window.addEventListener('resize', check);
+    })();
+
+    // Outline tracking
+    (function() {
+      const links = document.querySelectorAll('#sideOutline a, #mobileOutline a');
+      const secs = [];
+      links.forEach(link => {
+        const id = link.getAttribute('href')?.replace('#', '');
+        const el = id && document.getElementById(id);
+        if (el) secs.push({ el, link });
+      });
+      if (!secs.length) return;
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          const m = secs.find(s => s.el === entry.target);
+          if (m && entry.isIntersecting) {
+            links.forEach(l => l.parentElement?.classList.remove('is-active'));
+            m.link.parentElement?.classList.add('is-active');
+            links.forEach(l => {
+              if (l !== m.link && l.getAttribute('href') === m.link.getAttribute('href')) {
+                l.parentElement?.classList.add('is-active');
+              }
+            });
+          }
+        });
+      }, { rootMargin: '-72px 0px -60% 0px' });
+      secs.forEach(s => obs.observe(s.el));
+    })();
+  </script>
+</Layout>
